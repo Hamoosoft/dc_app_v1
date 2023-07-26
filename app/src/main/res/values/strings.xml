@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DcAp v_1</string>
+    <string name="language">Language</string>
+    <string name="chooseLanguage">choose Interface Language</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="chooseMode">choose interface mode</string>
 </resources>

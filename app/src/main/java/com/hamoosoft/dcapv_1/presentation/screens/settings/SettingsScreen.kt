@@ -1,6 +1,7 @@
 package com.hamoosoft.dcapv_1.presentation.screens.settings
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -8,7 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
+import com.hamoosoft.dcapv_1.common.Utils
 import com.hamoosoft.dcapv_1.navigation.Routes
 import com.hamoosoft.dcapv_1.presentation.screens.home.home_components.DcAppTopBar
 import com.hamoosoft.dcapv_1.presentation.screens.home.home_components.HomeNavigation
@@ -44,8 +47,22 @@ fun SettingsScreen(navController: NavController) {
 
 @Composable
 fun SettingsContent(modifier: Modifier) {
-    Column() {
+    val context = LocalContext.current
+    var language = rememberSaveable {
+        mutableStateOf(Utils.languages[0])
 
     }
+    var isDark = rememberSaveable {
+        mutableStateOf(false)
+
+    }
+    Column(modifier = modifier.fillMaxSize()) {
+        LanguageSettings(
+            isEnglish = language.value,
+            onLanguageOptionChanged = { language.value = it })
+        DarkMode(darkTheme = { isDark.value = !isDark.value }, modeValue = isDark.value)
+        ExportAndImport(context = context)
+    }
+
 
 }

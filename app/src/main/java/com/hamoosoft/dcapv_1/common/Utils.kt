@@ -12,4 +12,7 @@ object Utils {
         Icons.Default.Info to Routes.About.name,
         Icons.Default.Settings to Routes.Settings.name
     )
+    val languages = listOf("English", "Deutsch")
+
+
 }
